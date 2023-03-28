@@ -1,0 +1,14 @@
+.tab{
+  width: 20%;
+  margin-top: 20px;
+  margin-left: 10px;
+}
+.wrapper{
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background: url("./background.png");
+  display: grid;
+  grid-template-columns: 200px 1fr;
+}

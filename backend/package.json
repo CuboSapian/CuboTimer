@@ -1,0 +1,21 @@
+{
+  "name": "cubosapians-backend",
+  "version": "1.0.0",
+  "description": "CuboTimer: Timer for Cubo-Sapians all across the world",
+  "main": "index.js",
+  "scripts": {
+    "nodemon": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.18.2",
+    "express-validator": "^6.15.0",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^6.9.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.21"
+  }
+}
