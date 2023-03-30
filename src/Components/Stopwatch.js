@@ -1,8 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect , useContext} from "react";
 import './Stopwatch.css'
 import scrambleGenerator from "rubiks-cube-scramble";
+import timeContext from "../Context/times/timeContext"
 
 export default function Stopwatch() {
+  
+  const context = useContext(timeContext);
+  const {addTime} = context;
+
+  const [newTime, setNewTime] = useState({tos : 0 , scramble: ""})
+
   var [scramble, setScramble] = useState(scrambleGenerator())
   var handleNext = () => {
     setScramble(scrambleGenerator())
@@ -17,8 +24,9 @@ export default function Stopwatch() {
       if (running) {
         setRunning(false);
         setStopped(true);
+        setNewTime({...newTime,tos: time, scramble: scramble})
+        addTime(newTime.tos , newTime.scramble)
         setScramble(scrambleGenerator())
-        
       }
       else {
         if (event.code === "Escape") {
@@ -44,7 +52,7 @@ export default function Stopwatch() {
       document.removeEventListener("keydown", handleKeyDown);
       document.removeEventListener("keyup", handleKeyUp);
     };
-  }, [running, stopped]);
+  }, [running, stopped,addTime,newTime,scramble,time]);
 
   useEffect(() => {
     let intervalId;

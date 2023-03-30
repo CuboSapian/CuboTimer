@@ -41,7 +41,7 @@
     margin-top: -65px;
  }
  .stimulate{
-    position:absolute;
+    position: fixed;
     bottom:180px;
     right: 20px;
     background-image: url("../background.png");
