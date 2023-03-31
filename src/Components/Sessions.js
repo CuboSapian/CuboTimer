@@ -1,6 +1,7 @@
-import React, { useContext , useRef} from 'react'
+import React, { useContext , useRef, useEffect} from 'react'
 import './Sessions.css'
 import timeContext from "../Context/times/timeContext"
+import { toast } from 'react-hot-toast';
 // import BootstrapTable from 'react-bootstrap-table-next';
 
 // import toast from 'react-hot-toast';
@@ -8,11 +9,19 @@ import timeContext from "../Context/times/timeContext"
 const Sessions = () => {
 
     const context = useContext(timeContext);
-    const { session } = context;
+    const { session , deleteTime , getTime} = context;
     const ref = useRef(null)
 
+    useEffect(() => {
+        getTime()
+    }, [t])
+    
+
     const showDetails=(time)=>{
-        console.log("clicked")
+        // console.log("clicked")
+        var scdata=time.scramble;
+        toast.success(scdata +" Time  "+ time.tos+ "msec")
+        console.log(time._id)
         ref.current.click();
     }
 
@@ -24,55 +33,30 @@ const Sessions = () => {
         const milliseconds = Math.floor((time.tos % 1000) / 10);
 
         return (
-            <tr key={time._id} onClick={()=>{showDetails(time)}}>
-                <td className="ptr" onClick={()=>{showDetails(time)}}> {(minutes < 10 ? "0" : "") + minutes}:{(seconds < 10 ? "0" : "") + seconds}:{(milliseconds < 10 ? "0" : "") + milliseconds}</td>
-                <td className="ptr" onClick={()=>{showDetails(time)}}>{time.date}</td>
+            <>  
+            <tr key={time._id}>
+                <td className="ptr" onMouseOver={()=>{showDetails(time)}}> {(minutes < 10 ? "0" : "") + minutes}:{(seconds < 10 ? "0" : "") + seconds}:{(milliseconds < 10 ? "0" : "") + milliseconds}</td>
+                <td className="ptr" onMouseOver={()=>{showDetails(time)}}>{time.date}</td>
+                <td className='ptr' align='center'><div className='del'  onClick={()=>{deleteTime(time._id)}}>🛑</div></td>
+                <td className='ptr'></td>
             </tr>
+        </>
         )
     });
 
 
     return (
         <>
-        <>
-  <button ref={ref} type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-    Launch demo modal
-  </button>
-
-  <div className="modal fade" id="exampleModal" tabIndex={-1} role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div className="modal-dialog" role="document">
-      <div className="modal-content">
-        <div className="modal-header">
-          <h5 className="modal-title" id="exampleModalLabel">
-            Modal title
-          </h5>
-          <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div className="modal-body">...</div>
-        <div className="modal-footer">
-          <button type="button" className="btn btn-secondary" data-dismiss="modal" >
-            Close
-          </button>
-          <button type="button" className="btn btn-primary">
-            Save changes
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</>
 
             <div className='rowC'>
 
                 <table className="table table-dark table-hover">
                     <thead>
                         <tr>
-                            {/* <th className="click">⌕</th> */}
                             <th>Time</th>
                             <th>Date</th>
-                            <th>Get More Info</th>
+                            <th>Delete</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>

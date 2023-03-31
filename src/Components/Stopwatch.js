@@ -8,8 +8,6 @@ export default function Stopwatch() {
   const context = useContext(timeContext);
   const {addTime} = context;
 
-  const [newTime, setNewTime] = useState({tos : 0 , scramble: ""})
-
   var [scramble, setScramble] = useState(scrambleGenerator())
   var handleNext = () => {
     setScramble(scrambleGenerator())
@@ -24,8 +22,7 @@ export default function Stopwatch() {
       if (running) {
         setRunning(false);
         setStopped(true);
-        setNewTime({...newTime,tos: time, scramble: scramble})
-        addTime(newTime.tos , newTime.scramble)
+        addTime(time , scramble)
         setScramble(scrambleGenerator())
       }
       else {
@@ -52,7 +49,7 @@ export default function Stopwatch() {
       document.removeEventListener("keydown", handleKeyDown);
       document.removeEventListener("keyup", handleKeyUp);
     };
-  }, [running, stopped,addTime,newTime,scramble,time]);
+  }, [running, stopped,addTime,scramble,time]);
 
   useEffect(() => {
     let intervalId;
