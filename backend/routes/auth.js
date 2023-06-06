@@ -15,10 +15,11 @@ router.post('/createUser', [
   body('password').isLength({ min: 8 }),
   body('userName').isLength({ min: 3 }),
 ], async (req, res) => {
+  let success=false;
   //If errors found in validation
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
+    return res.status(400).json({ success, errors: errors.array() });
   }
 
   try {
@@ -28,7 +29,7 @@ router.post('/createUser', [
     }
     user = await User.findOne({ userName: req.body.userName });
     if (user) {
-      return res.status(400).json({ error: "Sorry a user with same UserName already exists" })
+      return res.status(400).json({success,  error: "Sorry a user with same UserName already exists" })
     }
     const salt = await bcrypt.genSalt(10);
     const secPass = await bcrypt.hash(req.body.password, salt);
@@ -44,7 +45,8 @@ router.post('/createUser', [
       }
     }
     const authtoken = jwt.sign(data, tempKi);
-    res.json({ authtoken })
+    success=true;
+    res.json({ success , authtoken })
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Internal Server Error");
@@ -65,7 +67,7 @@ router.post('/login', [
   body('email','Enter a valid email').isEmail(),
   body('password','Password cannot be blank').exists(),
 ], async (req, res) => {
-
+let success=false;
   //If errors found in validation
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -76,11 +78,11 @@ router.post('/login', [
   try {
     let user=await User.findOne({email});
     if(!user){
-      return res.status(400).json({error: "Wrong Credentials, Please try again"});
+      return res.status(400).json({success , error: "Wrong Credentials, Please try again"});
     }
     const passwordCompare=await bcrypt.compare(password,user.password);
     if(!passwordCompare){
-      return res.status(400).json({error: "Wrong Credentials, Please try again"});
+      return res.status(400).json({ success , error: "Wrong Credentials, Please try again"});
     }
     const data = {
       user: {
@@ -88,7 +90,8 @@ router.post('/login', [
       }
     }
     const authtoken = jwt.sign(data, tempKi);
-    res.json({ authtoken })
+    success = true;
+    res.json({ success , authtoken })
 
   } catch (error) {
     console.error(error.message);

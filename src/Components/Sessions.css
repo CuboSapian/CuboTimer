@@ -32,6 +32,7 @@
 
   .ptr{
     cursor: help;
+    font-weight: 500;
   }
   .del{
     cursor:pointer;

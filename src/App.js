@@ -6,6 +6,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import TimeState from "./Context/times/timeState";
 import Sessions from './Components/Sessions';
 import { Toaster } from 'react-hot-toast';
+import Login from "./Components/login";
+import Signup from "./Components/signup";
 
 export default function App() {
   return (
@@ -19,16 +21,18 @@ export default function App() {
           <Router>
             <div>
               <div>
-                <SlideNav />/
+                <SlideNav />
               </div>
               <div>
                 <Routes>
-                  <Route path="/home" element="HOME" />
+                  <Route path="/" element="HOME" />
                   <Route path="/timer" element={<>
                     <div className="temp tab">
                       <Sessions />
                     </div>
                     <div><Stopwatch /></div></>} />
+                    <Route path="/login" element={<Login/>}/>
+                    <Route path="/signup" element={<Signup/>}/>
                 </Routes>
               </div>
             </div>

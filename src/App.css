@@ -9,6 +9,6 @@
   background-repeat: no-repeat;
   background-size: cover;
   background: url("./background.png");
-  display: grid;
-  grid-template-columns: 200px 1fr;
+  /* display: grid;
+  grid-template-columns: 200px 1fr; */
 }

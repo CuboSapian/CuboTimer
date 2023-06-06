@@ -81,7 +81,7 @@ export default function Stopwatch() {
       <div className="endd">
       Scramble: {scramble}
       <br />
-      <button className="btn" onClick={handleNext} >New Scramble</button>
+      <button className="btn btn-outline-danger btnn" onClick={handleNext} >New Scramble</button>
       </div>
     </>
 
