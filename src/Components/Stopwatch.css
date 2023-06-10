@@ -1,14 +1,13 @@
 
 .algn{
     position: absolute;
-    top: 250px;
+    top: 230px;
     text-align: left;
     width: 550px;
-    margin-left: 500px;
-    /* margin-top: 250px; */
+    margin-left: 600px;
     height:270px;
-    background-image: url("../background.png");
-    font-size: 150px;
+    /* background-image: url("../background.png"); */
+    font-size: 130px;
     color: rgb(255, 0, 0);
     -webkit-text-stroke: 1px rgb(0, 0, 0);
     opacity: 50%;
@@ -18,7 +17,7 @@
 }
 
 .endd {
-    position:absolute;
+    position: fixed;
     border-radius: 15px;
     width: 100%;
     bottom:40px;
@@ -33,11 +32,11 @@
     opacity: 70%;
  }
  .btnn{
-    width: 220px;
-    font-size: 27px;
+    width: 200px;
+    font-size: 20px;
     color: red;
     -webkit-text-stroke: 0.7px #000000;
-    background-color: rgb(74, 74, 74);
+    background-color:black;
     margin-top: -65px;
  }
  .stimulate{
@@ -45,5 +44,5 @@
     bottom:180px;
     right: 20px;
     background-image: url("../background.png");
-    opacity: 70%;
+    opacity: 80%;
  }

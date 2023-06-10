@@ -1,0 +1,66 @@
+.form-input {
+  width: 420px;
+  height: 40px;
+}
+
+
+.alignment {
+    border: 3px red;
+  position: fixed;
+  top: 50%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 450px;
+  /* background-image: url("../background2.png"); */
+  /* opacity: 0.8; */
+  text-align: left;
+  padding: 20px;
+  /* opacity: 0.5; */
+  /* position: relative; */
+}
+
+.form-text {
+  /* margin-left: 130px; */
+  -webkit-text-fill-color: red;
+  font-size: 30px;
+}
+.heading{
+    margin-bottom: 50px;
+    font-size: 50px;
+}
+
+.buttonC {
+  margin-top: 15px;
+  width: 80px;
+  display: inline-block;
+  font-weight: 400;
+  color: #b00000;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  background-color: #000000;
+  border-color: #9a0808;
+}
+.alignmentSign{
+  border: 3px red;
+  position: fixed;
+  top: 45%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+}
+
+.headingSign{
+  margin-bottom: 40px;
+  font-size: 50px;
+}

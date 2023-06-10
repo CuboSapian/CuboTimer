@@ -11,9 +11,6 @@ const TimeState = (props) => {
 
     // GET ALL TIMES
     const getTime = async () => {
-        // API CALL PENDING
-        // if(localStorage.getItem('token'))
-        // {
             const response = await fetch(`${host}/api/sesn/fetchSolveInfo`, {
                 method: 'GET',
                 headers: {
@@ -22,17 +19,8 @@ const TimeState = (props) => {
                 },
             });
             const json = await response.json();
-            // console.log(json)
             setSession(json)
-        // }
-        // else
-        // {
-        //     const json= await JSON.parse(localStorage.getItem('localSolve'));
-        //     if(json===undefined)
-        //     setSession({});
-        //     else
-        //     setSession(json);
-        // }
+
     }
 
     // ADD A SOLVE
@@ -82,12 +70,8 @@ const TimeState = (props) => {
             },
         });
         const json = response.json();
-        console.log(json)
-
-        console.log("Deleting the solve with id" + id);
         const currSession = session.filter((time) => { return time._id !== id })
         setSession(currSession)
-        // toast.error("Deleted")
         toast('Deleted Successfully!', {
             id: 'deleteuniqueiid',
             icon: <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">

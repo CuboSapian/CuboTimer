@@ -1,12 +1,12 @@
-import React, { useState, useEffect , useContext} from "react";
+import React, { useState, useEffect, useContext } from "react";
 import './Stopwatch.css'
 import scrambleGenerator from "rubiks-cube-scramble";
 import timeContext from "../Context/times/timeContext"
 
 export default function Stopwatch() {
-  
+
   const context = useContext(timeContext);
-  const {addTime} = context;
+  const { addTime } = context;
 
   var [scramble, setScramble] = useState(scrambleGenerator())
   var handleNext = () => {
@@ -22,7 +22,7 @@ export default function Stopwatch() {
       if (running) {
         setRunning(false);
         setStopped(true);
-        addTime(time , scramble)
+        addTime(time, scramble)
         setScramble(scrambleGenerator())
       }
       else {
@@ -49,7 +49,7 @@ export default function Stopwatch() {
       document.removeEventListener("keydown", handleKeyDown);
       document.removeEventListener("keyup", handleKeyUp);
     };
-  }, [running, stopped,addTime,scramble,time]);
+  }, [running, stopped, addTime, scramble, time]);
 
   useEffect(() => {
     let intervalId;
@@ -76,12 +76,12 @@ export default function Stopwatch() {
       </div>
       <div className="stimulate">
 
-      <scramble-display scramble={scramble}></scramble-display>
+        <scramble-display scramble={scramble}></scramble-display>
       </div>
       <div className="endd">
-      Scramble: {scramble}
-      <br />
-      <button className="btn btn-outline-danger btnn" onClick={handleNext} >New Scramble</button>
+        Scramble: {scramble}
+        <br />
+        <button className="btn btn-outline-danger btnn" onClick={handleNext} >New Scramble</button>
       </div>
     </>
 

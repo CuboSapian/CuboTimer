@@ -12,34 +12,37 @@ import Signup from "./Components/signup";
 export default function App() {
   return (
     <>
-      <div>
-        <Toaster position="top-center" toastOptions={{duration: 1000}} />
-      </div>
       <div className="wrapper">
-        <TimeState>
+        {/* <div className="overlay"></div> */}
+        <div>
+          <Toaster position="top-center" toastOptions={{ duration: 1000 }} />
+        </div>
+        <div>
+          <TimeState>
 
-          <Router>
-            <div>
+            <Router>
               <div>
-                <SlideNav />
+                <div>
+                  <SlideNav />
+                </div>
+                <div>
+                  <Routes>
+                    <Route path="/" element="HOME" />
+                    <Route path="/timer" element={<>
+                      <div className="temp tab">
+                        <Sessions />
+                      </div>
+                      <div><Stopwatch /></div></>} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/signup" element={<Signup />} />
+                  </Routes>
+                </div>
               </div>
-              <div>
-                <Routes>
-                  <Route path="/" element="HOME" />
-                  <Route path="/timer" element={<>
-                    <div className="temp tab">
-                      <Sessions />
-                    </div>
-                    <div><Stopwatch /></div></>} />
-                    <Route path="/login" element={<Login/>}/>
-                    <Route path="/signup" element={<Signup/>}/>
-                </Routes>
-              </div>
-            </div>
 
-          </Router>
-        </TimeState>
+            </Router>
+          </TimeState>
 
+        </div>
       </div>
     </>
   );

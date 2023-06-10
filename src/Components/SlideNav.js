@@ -35,9 +35,9 @@ const SlideNav = () => {
           </ul>
         </div>
         {!localStorage.getItem('token') ? <form className="d-flex">
-          <Link className="btn btn-outline-danger mx-2" role="button" to="/login">Login</Link>
-          <Link className="btn btn-outline-danger mx-2" role="button" to="/signup">Signup</Link>
-        </form> :  <button onClick={handleLogout} className="btn btn-primary">Logout</button>}
+          <Link className="buttonC mx-2" role="button" to="/login">Login</Link>
+          <Link className="buttonC mx-2" role="button" to="/signup">Signup</Link>
+        </form> :  <button onClick={handleLogout} className="buttonC">Logout</button>}
       </div>
     </nav>
 
